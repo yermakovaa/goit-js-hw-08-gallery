@@ -72,7 +72,7 @@ function onCloseModal() {
 }
 
 // Закрытие модального окна по клику на overlay
-function onOverlayClick(event) {
+function onOverlayClick() {
   onCloseModal();
 }
 
