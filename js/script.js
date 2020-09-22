@@ -87,11 +87,27 @@ function onEscKeyPress(event) {
 
 // Пролистывание изображений галереи
 function onNextImgClick(event) {
-  console.log(event.code);
   const RIGHT_KEY_CODE = 'ArrowRight';
   const LEFT_KEY_CODE = 'ArrowLeft';
 
-  // if (event.code === RIGHT_KEY_CODE) {
+  let findIndexImg = galleryItems.findIndex(
+    el => el.original === refs.lightboxImg.src,
+  );
 
-  // }
+  if (event.code === LEFT_KEY_CODE) {
+    if (findIndexImg === 0) {
+      return;
+    }
+    findIndexImg -= 1;
+  }
+
+  if (event.code === RIGHT_KEY_CODE) {
+    if (findIndexImg === galleryItems.length - 1) {
+      return;
+    }
+    findIndexImg += 1;
+  }
+
+  refs.lightboxImg.src = galleryItems[findIndexImg].original;
+  refs.lightboxImg.alt = galleryItems[findIndexImg].description;
 }
